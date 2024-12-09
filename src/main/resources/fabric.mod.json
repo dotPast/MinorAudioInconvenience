@@ -3,17 +3,18 @@
 	"id": "minor-audio-inconvenience",
 	"version": "${version}",
 	"name": "Minor Audio Inconvenience",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Force set volume for individual sounds.",
 	"authors": [
-		"Me!"
+		"dotPast"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/dotPast/MinorAudioInconvenience",
+		"sources": "https://github.com/dotPast/MinorAudioInconvenience",
+		"issues": "https://github.com/dotPast/MinorAudioInconvenience/issues"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/minor-audio-inconvenience/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
 		"main": [
 			"minor.audio.inconvenience.MinorAudioInconvenience"
@@ -34,8 +35,5 @@
 		"minecraft": "~1.21.2",
 		"java": ">=21",
 		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
