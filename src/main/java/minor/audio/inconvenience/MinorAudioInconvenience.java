@@ -13,6 +13,8 @@ public class MinorAudioInconvenience implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static final minor.audio.inconvenience.ModConfig CONFIG = minor.audio.inconvenience.ModConfig.createAndLoad();
+
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
