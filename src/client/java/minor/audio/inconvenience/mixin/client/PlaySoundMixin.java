@@ -16,57 +16,61 @@ import java.util.Objects;
 public class PlaySoundMixin {
 	@ModifyArgs(method = "playSound(DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FFZJ)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/sound/SoundManager;play(Lnet/minecraft/client/sound/SoundInstance;I)V"))
 	private void injectVolume(Args args) {
-		PositionedSoundInstance sound = args.get(0);
+        if (MinorAudioInconvenience.CONFIG.enabled()) {
+            PositionedSoundInstance sound = args.get(0);
 
-		float volume = 1;
-		float pitch = 1;
+            float volume = 1;
+            float pitch = 1;
 
-		try {
-			pitch = sound.getPitch();
-    	} catch (Exception ignored) {}
+            try {
+                pitch = sound.getPitch();
+			} catch (Exception ignored) {}
 
-		for (String soundOverride : MinorAudioInconvenience.CONFIG.soundList()) {
-			String[] splitSoundOverride = soundOverride.split("=");
-			String[] soundOverrideId = splitSoundOverride[0].split(":");
+            for (String soundOverride : MinorAudioInconvenience.CONFIG.soundList()) {
+                String[] splitSoundOverride = soundOverride.split("=");
+                String[] soundOverrideId = splitSoundOverride[0].split(":");
 
-			if (Objects.equals(sound.getId().getNamespace(), soundOverrideId[0]) && Objects.equals(sound.getId().getPath(), soundOverrideId[1])) {
-				volume = Float.parseFloat(splitSoundOverride[1]);
-			}
-		}
+                if (Objects.equals(sound.getId().getNamespace(), soundOverrideId[0]) && Objects.equals(sound.getId().getPath(), soundOverrideId[1])) {
+                    volume = Float.parseFloat(splitSoundOverride[1]);
+                }
+            }
 
-    	args.set(
-        	0,
-				new PositionedSoundInstance(
-						new SoundEvent(sound.getId(), null), sound.getCategory(), volume, pitch, Random.create(), sound.getX(), sound.getY(), sound.getZ()
-				)
-		);
-	}
+            args.set(
+                0,
+                    new PositionedSoundInstance(
+                            new SoundEvent(sound.getId(), null), sound.getCategory(), volume, pitch, Random.create(), sound.getX(), sound.getY(), sound.getZ()
+                    )
+            );
+        }
+    }
 
 	@ModifyArgs(method = "playSound(DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FFZJ)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/sound/SoundManager;play(Lnet/minecraft/client/sound/SoundInstance;)V"))
 	private void injectVolumeNoDelay(Args args) {
-		PositionedSoundInstance sound = args.get(0);
+        if (MinorAudioInconvenience.CONFIG.enabled()) {
+            PositionedSoundInstance sound = args.get(0);
 
-        float volume = 1;
-		float pitch = 1;
+            float volume = 1;
+            float pitch = 1;
 
-		try {
-			pitch = sound.getPitch();
-		} catch (Exception ignored) {}
+            try {
+                pitch = sound.getPitch();
+            } catch (Exception ignored) {}
 
-		for (String soundOverride : MinorAudioInconvenience.CONFIG.soundList()) {
-			String[] splitSoundOverride = soundOverride.split("=");
-			String[] soundOverrideId = splitSoundOverride[0].split(":");
+            for (String soundOverride : MinorAudioInconvenience.CONFIG.soundList()) {
+                String[] splitSoundOverride = soundOverride.split("=");
+                String[] soundOverrideId = splitSoundOverride[0].split(":");
 
-			if (Objects.equals(sound.getId().getNamespace(), soundOverrideId[0]) && Objects.equals(sound.getId().getPath(), soundOverrideId[1])) {
-				volume = Float.parseFloat(splitSoundOverride[1]);
-			}
-		}
+                if (Objects.equals(sound.getId().getNamespace(), soundOverrideId[0]) && Objects.equals(sound.getId().getPath(), soundOverrideId[1])) {
+                    volume = Float.parseFloat(splitSoundOverride[1]);
+                }
+            }
 
-		args.set(
-				0,
-				new PositionedSoundInstance(
-						new SoundEvent(sound.getId(), null), sound.getCategory(), volume, pitch, Random.create(), sound.getX(), sound.getY(), sound.getZ()
-				)
-		);
-	}
+            args.set(
+                    0,
+                    new PositionedSoundInstance(
+                            new SoundEvent(sound.getId(), null), sound.getCategory(), volume, pitch, Random.create(), sound.getX(), sound.getY(), sound.getZ()
+                    )
+            );
+        }
+    }
 }
