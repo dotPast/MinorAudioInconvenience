@@ -3,7 +3,7 @@
 	"id": "minor-audio-inconvenience",
 	"version": "${version}",
 	"name": "Minor Audio Inconvenience",
-	"description": "Force set volume for individual sounds.",
+	"description": "Inconveniently force set volume for individual inconvenient sounds.",
 	"authors": [
 		"dotPast"
 	],
