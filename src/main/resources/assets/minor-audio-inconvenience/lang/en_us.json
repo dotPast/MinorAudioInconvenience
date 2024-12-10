@@ -5,6 +5,7 @@
   "text.config.minor-audio-inconvenience.option.enabled.tooltip": "Controls if the mod is enabled. \nIf disabled, the volume of sounds will not be changed.",
   "text.config.minor-audio-inconvenience.option.enabled.tooltip": "Enable or disable the mod. \nIf disabled, the volume of sounds will not be changed.",
   "text.config.minor-audio-inconvenience.option.enabled.tooltip": "Enable or disable the mod. \nIf disabled, the volume of sounds will not be changed. Does not interrupt already playing sounds.",
+  "text.config.minor-audio-inconvenience.option.enabled.tooltip": "Enable or disable the mod. \nIf disabled, the volume of sounds will not be changed. Does not interrupt currently playing sounds.",
 
   "text.config.minor-audio-inconvenience.option.soundList": "Sounds",
   "text.config.minor-audio-inconvenience.option.soundList.tooltip": "List of sounds with custom volume.\nUsing the \"Add Sounds\" menu to add new sounds is recommended.\n\nFormat: namespace:id=volume"
