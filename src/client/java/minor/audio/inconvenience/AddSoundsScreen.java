@@ -3,6 +3,7 @@ package minor.audio.inconvenience;
 import io.wispforest.owo.ui.base.BaseOwoScreen;
 import io.wispforest.owo.ui.component.ButtonComponent;
 import io.wispforest.owo.ui.component.Components;
+import io.wispforest.owo.ui.component.SliderComponent;
 import io.wispforest.owo.ui.container.CollapsibleContainer;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
@@ -93,12 +94,14 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                     Components.label(Text.literal(soundID.getPath()))
             );
 
+            SliderComponent volumeSlider = Components.slider(Sizing.fill(10)).message(Text::literal).value(1);
+
             soundOption.child(
-                    Components.slider(Sizing.fill(10)).margins(Insets.of(0, 0, 16, 16))
+                    volumeSlider.margins(Insets.of(0, 0, 16, 16))
             );
 
             ButtonComponent addToConfigButton = Components.button(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig"), button -> {
-                MinorAudioInconvenience.CONFIG.soundList().add(String.format("%s=1", soundID));
+                MinorAudioInconvenience.CONFIG.soundList().add(String.format("%s=%s", soundID, volumeSlider.value()));
                 button.active = false;
                 button.setMessage(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig.added"));
             });
