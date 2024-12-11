@@ -29,6 +29,7 @@ loom {
 		}
 	}
 
+	accessWidenerPath = file("src/main/resources/minor-audio-inconvenience.accesswidener")
 }
 
 dependencies {
