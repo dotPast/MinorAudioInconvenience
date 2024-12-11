@@ -32,10 +32,14 @@ public class PlaySoundMixin {
 
             for (String soundOverride : MinorAudioInconvenience.CONFIG.soundList()) {
                 String[] splitSoundOverride = soundOverride.split("=");
-                String[] soundOverrideId = splitSoundOverride[0].split(":");
+                try {
+                    String[] soundOverrideId = splitSoundOverride[0].split(":");
 
-                if (Objects.equals(sound.getId().getNamespace(), soundOverrideId[0]) && Objects.equals(sound.getId().getPath(), soundOverrideId[1])) {
-                    volume = Float.parseFloat(splitSoundOverride[1]);
+                    if (Objects.equals(sound.getId().getNamespace(), soundOverrideId[0]) && Objects.equals(sound.getId().getPath(), soundOverrideId[1])) {
+                        volume = Float.parseFloat(splitSoundOverride[1]);
+                    }
+                } catch (Exception ignored) {
+                    MinorAudioInconvenience.LOGGER.error("Format of '{}' sound override is invalid.", soundOverride);
                 }
             }
 
@@ -66,10 +70,14 @@ public class PlaySoundMixin {
 
             for (String soundOverride : MinorAudioInconvenience.CONFIG.soundList()) {
                 String[] splitSoundOverride = soundOverride.split("=");
-                String[] soundOverrideId = splitSoundOverride[0].split(":");
+                try {
+                    String[] soundOverrideId = splitSoundOverride[0].split(":");
 
-                if (Objects.equals(sound.getId().getNamespace(), soundOverrideId[0]) && Objects.equals(sound.getId().getPath(), soundOverrideId[1])) {
-                    volume = Float.parseFloat(splitSoundOverride[1]);
+                    if (Objects.equals(sound.getId().getNamespace(), soundOverrideId[0]) && Objects.equals(sound.getId().getPath(), soundOverrideId[1])) {
+                        volume = Float.parseFloat(splitSoundOverride[1]);
+                    }
+                } catch (Exception ignored) {
+                    MinorAudioInconvenience.LOGGER.error("Format of '{}' sound override is invalid.", soundOverride);
                 }
             }
 
