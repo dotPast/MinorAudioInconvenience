@@ -4,7 +4,7 @@
   "text.config.minor-audio-inconvenience.option.enabled": "Enabled",
   "text.config.minor-audio-inconvenience.option.enabled.tooltip": "Enable or disable the mod. \nIf disabled, the volume of sounds will not be changed. Does not interrupt currently playing sounds.",
   "text.config.minor-audio-inconvenience.option.showAllSounds": "Show all sounds in subtitles",
-  "text.config.minor-audio-inconvenience.option.showAllSounds.tooltip": "Display all playing sounds IDs in the subtitles.",
+  "text.config.minor-audio-inconvenience.option.showAllSounds.tooltip": "Display all playing sounds IDs in the subtitles. Does not hide duplicates.",
 
   "text.config.minor-audio-inconvenience.option.soundList": "Sounds",
   "text.config.minor-audio-inconvenience.option.soundList.tooltip": "List of sounds with custom volume.\nUsing the \"Add Sounds\" menu to add new sounds is recommended.\n\nFormat: namespace:id=volume"
