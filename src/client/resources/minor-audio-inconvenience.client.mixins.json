@@ -3,6 +3,7 @@
 	"package": "minor.audio.inconvenience.mixin.client",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
+		"AddButtonToSoundSettingsMixin",
 		"DisplaySubtitleMixin",
 		"PlaySoundMixin"
 	],

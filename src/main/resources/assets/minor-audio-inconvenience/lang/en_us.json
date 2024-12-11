@@ -9,6 +9,7 @@
   "text.config.minor-audio-inconvenience.option.soundList": "Sounds",
   "text.config.minor-audio-inconvenience.option.soundList.tooltip": "List of sounds with custom volume.\nUsing the \"Add Sounds\" menu to add new sounds is recommended.\n\nFormat: namespace:id=volume",
 
+  "text.menu.minor-audio-inconvenience.add.enter": "Add new forced sound volume",
   "text.menu.minor-audio-inconvenience.add.title": "Add new sound to the settings...",
   "text.menu.minor-audio-inconvenience.add.button.addtoconfig": "Add to the settings",
   "text.menu.minor-audio-inconvenience.add.button.addtoconfig.added": "Added to the settings",
