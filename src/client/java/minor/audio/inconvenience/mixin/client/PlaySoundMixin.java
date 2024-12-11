@@ -23,6 +23,10 @@ public class PlaySoundMixin {
             float pitch = 1;
 
             try {
+                volume = sound.getVolume();
+            } catch (Exception ignored) {}
+
+            try {
                 pitch = sound.getPitch();
 			} catch (Exception ignored) {}
 
@@ -51,6 +55,10 @@ public class PlaySoundMixin {
 
             float volume = 1;
             float pitch = 1;
+
+            try {
+                volume = sound.getVolume();
+            } catch (Exception ignored) {}
 
             try {
                 pitch = sound.getPitch();
