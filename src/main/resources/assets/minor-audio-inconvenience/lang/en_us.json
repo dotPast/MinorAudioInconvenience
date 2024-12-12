@@ -13,5 +13,6 @@
   "text.menu.minor-audio-inconvenience.add.title": "Add new sound to the settings...",
   "text.menu.minor-audio-inconvenience.add.button.addtoconfig": "Add to the settings",
   "text.menu.minor-audio-inconvenience.add.button.addtoconfig.added": "Added to the settings",
-  "text.menu.minor-audio-inconvenience.add.button.addtoconfig.alreadypresent": "Already in the settings"
+  "text.menu.minor-audio-inconvenience.add.button.addtoconfig.alreadypresent": "Already in the settings",
+  "text.menu.minor-audio-inconvenience.add.volumeslider.value": "Volume"
 }

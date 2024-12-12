@@ -94,14 +94,21 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                     Components.label(Text.literal(soundID.getPath()))
             );
 
-            SliderComponent volumeSlider = Components.slider(Sizing.fill(10)).message(Text::literal).value(1);
+            SliderComponent volumeSlider = Components.slider(Sizing.fill(10)).message(
+                    (String progress) -> Text.translatable("text.menu.minor-audio-inconvenience.add.volumeslider.value").append(Text.literal(String.format(
+                            ": %s",
+                            (int) Math.ceil(Double.parseDouble(progress) * 100)
+                    )).append("%"))
+            ).value(1);
 
             soundOption.child(
                     volumeSlider.margins(Insets.of(0, 0, 16, 16))
             );
 
             ButtonComponent addToConfigButton = Components.button(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig"), button -> {
-                MinorAudioInconvenience.CONFIG.soundList().add(String.format("%s=%s", soundID, volumeSlider.value()));
+                Double volume = Math.ceil(volumeSlider.value() * 100) / 100;
+                MinorAudioInconvenience.CONFIG.soundList().add(String.format("%s=%s", soundID, volume));
+                MinorAudioInconvenience.CONFIG.save();
                 button.active = false;
                 button.setMessage(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig.added"));
             });
