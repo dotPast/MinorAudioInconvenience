@@ -99,7 +99,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                             ": %s",
                             (int) Math.ceil(Double.parseDouble(progress) * 100)
                     )).append("%"))
-            ).value(1);
+            ).value(1).scrollStep(0.01);
 
             soundOption.child(
                     volumeSlider.margins(Insets.of(0, 0, 16, 16))
