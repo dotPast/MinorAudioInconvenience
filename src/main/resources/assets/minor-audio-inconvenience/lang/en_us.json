@@ -9,10 +9,9 @@
   "text.config.minor-audio-inconvenience.option.soundList": "Sounds",
   "text.config.minor-audio-inconvenience.option.soundList.tooltip": "List of sounds with custom volume.\nUsing the \"Add new forced sound volume\" menu to add new sounds is recommended.\n\nFormat: namespace:id=volume",
 
-  "text.menu.minor-audio-inconvenience.add.enter": "Add new forced sound volume",
-  "text.menu.minor-audio-inconvenience.add.title": "Add new sound to the settings...",
-  "text.menu.minor-audio-inconvenience.add.button.addtoconfig": "Add to the settings",
-  "text.menu.minor-audio-inconvenience.add.button.addtoconfig.added": "Added to the settings",
-  "text.menu.minor-audio-inconvenience.add.button.addtoconfig.alreadypresent": "Already in the settings",
+  "text.menu.minor-audio-inconvenience.add.enter": "Set forced sound volume",
+  "text.menu.minor-audio-inconvenience.add.title": "Add forced volume to a sound...",
+  "text.menu.minor-audio-inconvenience.add.button.addtoconfig": "Set forced volume",
+  "text.menu.minor-audio-inconvenience.add.button.addtoconfig.success": "Forced volume set",
   "text.menu.minor-audio-inconvenience.add.volumeslider.value": "Volume"
 }

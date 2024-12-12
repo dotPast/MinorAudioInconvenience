@@ -107,16 +107,24 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
 
             ButtonComponent addToConfigButton = Components.button(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig"), button -> {
                 Double volume = Math.ceil(volumeSlider.value() * 100) / 100;
+
+                for (String configId : MinorAudioInconvenience.CONFIG.soundList()) {
+                    if (configId.split("=")[0].equals(soundID.toString())) {
+                        MinorAudioInconvenience.CONFIG.soundList().remove(configId);
+                        break;
+                    }
+                }
+
                 MinorAudioInconvenience.CONFIG.soundList().add(String.format("%s=%s", soundID, volume));
                 MinorAudioInconvenience.CONFIG.save();
-                button.active = false;
-                button.setMessage(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig.added"));
+                button.setMessage(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig.success"));
             });
 
             for (String configId : MinorAudioInconvenience.CONFIG.soundList()) {
-                if (configId.split("=")[0].equals(soundID.toString())) {
-                    addToConfigButton.active(false);
-                    addToConfigButton.setMessage(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig.alreadypresent"));
+                String[] configSplit = configId.split("=");
+
+                if (configSplit[0].equals(soundID.toString())) {
+                    volumeSlider.value(Double.parseDouble(configSplit[1]));
                 }
             }
 
