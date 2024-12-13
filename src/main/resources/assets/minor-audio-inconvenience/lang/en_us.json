@@ -12,7 +12,5 @@
   "text.menu.minor-audio-inconvenience.add.enter": "Set forced sound volume",
   "text.menu.minor-audio-inconvenience.add.title": "Add forced volume to a sound...",
   "text.menu.minor-audio-inconvenience.add.search": "Search",
-  "text.menu.minor-audio-inconvenience.add.button.addtoconfig": "Set forced volume",
-  "text.menu.minor-audio-inconvenience.add.button.addtoconfig.success": "Forced volume set",
-  "text.menu.minor-audio-inconvenience.add.volumeslider.value": "Volume"
+  "text.menu.minor-audio-inconvenience.add.volumeslider": "Volume"
 }

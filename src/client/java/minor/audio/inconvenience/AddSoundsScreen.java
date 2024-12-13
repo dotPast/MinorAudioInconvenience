@@ -162,7 +162,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
         );
 
         SliderComponent volumeSlider = Components.slider(Sizing.fill(10)).message(
-                (String progress) -> Text.translatable("text.menu.minor-audio-inconvenience.add.volumeslider.value").append(Text.literal(String.format(
+                (String progress) -> Text.translatable("text.menu.minor-audio-inconvenience.add.volumeslider").append(Text.literal(String.format(
                         ": %s",
                         (int) Math.ceil(Double.parseDouble(progress) * 100)
                 )).append("%"))
@@ -179,7 +179,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
 
         soundInteraction.child(volumeSlider);
 
-        ButtonComponent addToConfigButton = Components.button(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig"), button -> {
+        ButtonComponent addToConfigButton = Components.button(Text.literal("+"), button -> {
             Double volume = Math.ceil(volumeSlider.value() * 100) / 100;
 
             for (String configId : MinorAudioInconvenience.CONFIG.soundList()) {
@@ -191,7 +191,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
 
             MinorAudioInconvenience.CONFIG.soundList().add(String.format("%s=%s", soundID, volume));
             MinorAudioInconvenience.CONFIG.save();
-            button.setMessage(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig.success"));
+            button.setMessage(Text.literal("✔"));
         });
 
         for (String configId : MinorAudioInconvenience.CONFIG.soundList()) {
@@ -202,7 +202,9 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
             }
         }
 
-        soundInteraction.child(addToConfigButton);
+        soundInteraction.child(
+                addToConfigButton.sizing(Sizing.fixed(20))
+        );
 
         soundComponent.child(soundInfo.alignment(HorizontalAlignment.LEFT, VerticalAlignment.CENTER), 0, 0);
         soundComponent.child(soundInteraction.alignment(HorizontalAlignment.RIGHT, VerticalAlignment.CENTER), 0, 1);
