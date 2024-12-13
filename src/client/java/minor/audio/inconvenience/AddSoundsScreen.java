@@ -1,10 +1,7 @@
 package minor.audio.inconvenience;
 
 import io.wispforest.owo.ui.base.BaseOwoScreen;
-import io.wispforest.owo.ui.component.ButtonComponent;
-import io.wispforest.owo.ui.component.Components;
-import io.wispforest.owo.ui.component.SliderComponent;
-import io.wispforest.owo.ui.component.TextBoxComponent;
+import io.wispforest.owo.ui.component.*;
 import io.wispforest.owo.ui.container.CollapsibleContainer;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
@@ -153,7 +150,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
 
                             soundManager.play(soundInstance);
                         })
-                        .margins(Insets.of(0, 0, 0, 16))
+                        .margins(Insets.right(4))
                         .sizing(Sizing.fixed(20))
         );
 
@@ -171,13 +168,13 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
         if (gameInstance.options.getGuiScale().getValue() == 4) {
             volumeSlider.setWidth(50);
             volumeSlider.message((String progress) -> Text.literal(String.valueOf((int) Math.ceil(Double.parseDouble(progress) * 100))).append("%"));
-            volumeSlider.margins(Insets.right(8));
         } else {
             volumeSlider.setWidth(100);
-            volumeSlider.margins(Insets.right(16));
         }
 
-        soundInteraction.child(volumeSlider);
+        soundInteraction.child(
+                volumeSlider.margins(Insets.right(4))
+        );
 
         ButtonComponent addToConfigButton = Components.button(Text.literal("+"), button -> {
             Double volume = Math.ceil(volumeSlider.value() * 100) / 100;
