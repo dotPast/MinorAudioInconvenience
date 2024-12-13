@@ -8,6 +8,7 @@ import io.wispforest.owo.ui.component.TextBoxComponent;
 import io.wispforest.owo.ui.container.CollapsibleContainer;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
+import io.wispforest.owo.ui.container.GridLayout;
 import io.wispforest.owo.ui.core.*;
 import io.wispforest.owo.ui.core.Insets;
 import net.minecraft.client.MinecraftClient;
@@ -111,13 +112,16 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
         }
     }
 
-    public FlowLayout generateSoundComponent(Identifier soundID) {
+    public GridLayout generateSoundComponent(Identifier soundID) {
         MinecraftClient gameInstance = MinecraftClient.getInstance();
         SoundManager soundManager = gameInstance.getSoundManager();
 
-        FlowLayout soundOption = Containers.horizontalFlow(Sizing.content(), Sizing.content());
+        GridLayout soundComponent = Containers.grid(Sizing.expand(), Sizing.content(), 1, 2);
 
-        soundOption.child(
+        FlowLayout soundInfo = Containers.horizontalFlow(Sizing.expand(50), Sizing.content());
+        FlowLayout soundInteraction = Containers.horizontalFlow(Sizing.expand(50), Sizing.content());
+
+        soundInfo.child(
                 Components.button(Text.literal("▶"), button -> {
                             SoundInstance soundInstance;
                             if (gameInstance.getServer() != null || gameInstance.getCurrentServerEntry() != null) {
@@ -153,7 +157,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                         .sizing(Sizing.fixed(20))
         );
 
-        soundOption.child(
+        soundInfo.child(
                 Components.label(Text.literal(soundID.getPath())).verticalTextAlignment(VerticalAlignment.CENTER).sizing(Sizing.content(), Sizing.fixed(20))
         );
 
@@ -164,8 +168,10 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                 )).append("%"))
         ).value(1).scrollStep(0.01);
 
-        soundOption.child(
-                volumeSlider.margins(Insets.of(0, 0, 16, 16))
+        volumeSlider.setWidth(100);
+
+        soundInteraction.child(
+                volumeSlider.margins(Insets.right(16))
         );
 
         ButtonComponent addToConfigButton = Components.button(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig"), button -> {
@@ -191,8 +197,11 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
             }
         }
 
-        soundOption.child(addToConfigButton);
+        soundInteraction.child(addToConfigButton);
 
-        return soundOption;
+        soundComponent.child(soundInfo.alignment(HorizontalAlignment.LEFT, VerticalAlignment.CENTER), 0, 0);
+        soundComponent.child(soundInteraction.alignment(HorizontalAlignment.RIGHT, VerticalAlignment.CENTER), 0, 1);
+
+        return soundComponent;
     }
 }
