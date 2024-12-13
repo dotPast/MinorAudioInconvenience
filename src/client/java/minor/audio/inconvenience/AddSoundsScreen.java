@@ -58,7 +58,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
         root.child(
                 Containers.verticalFlow(Sizing.content(), Sizing.content())
                         .child(
-                                Containers.verticalScroll(Sizing.fill(50), Sizing.fill(50), soundList)
+                                Containers.verticalScroll(Sizing.fill(80), Sizing.fill(75), soundList)
                         )
                         .padding(Insets.of(10))
                         .surface(Surface.DARK_PANEL)
