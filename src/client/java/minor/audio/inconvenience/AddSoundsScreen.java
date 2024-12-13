@@ -168,11 +168,16 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                 )).append("%"))
         ).value(1).scrollStep(0.01);
 
-        volumeSlider.setWidth(100);
+        if (gameInstance.options.getGuiScale().getValue() == 4) {
+            volumeSlider.setWidth(50);
+            volumeSlider.message((String progress) -> Text.literal(String.valueOf((int) Math.ceil(Double.parseDouble(progress) * 100))).append("%"));
+            volumeSlider.margins(Insets.right(8));
+        } else {
+            volumeSlider.setWidth(100);
+            volumeSlider.margins(Insets.right(16));
+        }
 
-        soundInteraction.child(
-                volumeSlider.margins(Insets.right(16))
-        );
+        soundInteraction.child(volumeSlider);
 
         ButtonComponent addToConfigButton = Components.button(Text.translatable("text.menu.minor-audio-inconvenience.add.button.addtoconfig"), button -> {
             Double volume = Math.ceil(volumeSlider.value() * 100) / 100;
