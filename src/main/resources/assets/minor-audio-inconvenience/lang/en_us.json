@@ -7,10 +7,10 @@
   "text.config.minor-audio-inconvenience.option.showAllSounds.tooltip": "Display all playing sounds IDs in the subtitles. Does not hide duplicates.",
 
   "text.config.minor-audio-inconvenience.option.soundList": "Sounds",
-  "text.config.minor-audio-inconvenience.option.soundList.tooltip": "List of sounds with custom volume.\nUsing the \"Add forced volume to a sound\" menu to add new sounds is recommended.\n\nFormat: namespace:id=volume",
+  "text.config.minor-audio-inconvenience.option.soundList.tooltip": "List of sounds with custom volume.\nUsing the \"Set volume for a sound...\" menu to add new sounds is recommended.\n\nFormat: namespace:id=volume",
 
-  "text.menu.minor-audio-inconvenience.add.enter": "Set forced sound volume",
-  "text.menu.minor-audio-inconvenience.add.title": "Add forced volume to a sound...",
+  "text.menu.minor-audio-inconvenience.add.enter": "Set sound volume",
+  "text.menu.minor-audio-inconvenience.add.title": "Set volume for a sound...",
   "text.menu.minor-audio-inconvenience.add.search": "Search",
   "text.menu.minor-audio-inconvenience.add.volumeslider": "Volume"
 }
