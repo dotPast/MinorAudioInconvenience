@@ -1,6 +1,6 @@
 # Minor Audio Inconvenience
 
-Allows to set volume for individual sounds.
+Set volume for individual sounds.
 
 ## Screenshots
 !["Add forced volume to a sound" Menu](https://raw.githubusercontent.com/dotPast/MinorAudioInconvenience/refs/heads/main/assets/Add%20Screen.png)
