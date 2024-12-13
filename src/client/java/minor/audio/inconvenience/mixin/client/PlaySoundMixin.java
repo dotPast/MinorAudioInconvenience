@@ -14,8 +14,8 @@ import java.util.Objects;
 
 @Mixin(ClientWorld.class)
 public class PlaySoundMixin {
-	@ModifyArgs(method = "playSound(DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FFZJ)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/sound/SoundManager;play(Lnet/minecraft/client/sound/SoundInstance;I)V"))
-	private void injectVolume(Args args) {
+    @ModifyArgs(method = "playSound(DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FFZJ)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/sound/SoundManager;play(Lnet/minecraft/client/sound/SoundInstance;I)V"))
+    private void injectVolume(Args args) {
         if (MinorAudioInconvenience.CONFIG.enabled()) {
             PositionedSoundInstance sound = args.get(0);
 
@@ -24,11 +24,13 @@ public class PlaySoundMixin {
 
             try {
                 volume = sound.getVolume();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
 
             try {
                 pitch = sound.getPitch();
-			} catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
 
             for (String soundOverride : MinorAudioInconvenience.CONFIG.soundList()) {
                 String[] splitSoundOverride = soundOverride.split("=");
@@ -44,7 +46,7 @@ public class PlaySoundMixin {
             }
 
             args.set(
-                0,
+                    0,
                     new PositionedSoundInstance(
                             new SoundEvent(sound.getId(), null), sound.getCategory(), volume, pitch, Random.create(), sound.getX(), sound.getY(), sound.getZ()
                     )
@@ -52,8 +54,8 @@ public class PlaySoundMixin {
         }
     }
 
-	@ModifyArgs(method = "playSound(DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FFZJ)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/sound/SoundManager;play(Lnet/minecraft/client/sound/SoundInstance;)V"))
-	private void injectVolumeNoDelay(Args args) {
+    @ModifyArgs(method = "playSound(DDDLnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FFZJ)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/sound/SoundManager;play(Lnet/minecraft/client/sound/SoundInstance;)V"))
+    private void injectVolumeNoDelay(Args args) {
         if (MinorAudioInconvenience.CONFIG.enabled()) {
             PositionedSoundInstance sound = args.get(0);
 
@@ -62,11 +64,13 @@ public class PlaySoundMixin {
 
             try {
                 volume = sound.getVolume();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
 
             try {
                 pitch = sound.getPitch();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
 
             for (String soundOverride : MinorAudioInconvenience.CONFIG.soundList()) {
                 String[] splitSoundOverride = soundOverride.split("=");

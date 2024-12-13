@@ -1,15 +1,20 @@
 package minor.audio.inconvenience;
 
 import io.wispforest.owo.ui.base.BaseOwoScreen;
-import io.wispforest.owo.ui.component.*;
+import io.wispforest.owo.ui.component.ButtonComponent;
+import io.wispforest.owo.ui.component.Components;
+import io.wispforest.owo.ui.component.SliderComponent;
+import io.wispforest.owo.ui.component.TextBoxComponent;
 import io.wispforest.owo.ui.container.CollapsibleContainer;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.container.GridLayout;
 import io.wispforest.owo.ui.core.*;
-import io.wispforest.owo.ui.core.Insets;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.sound.*;
+import net.minecraft.client.sound.AbstractSoundInstance;
+import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.client.sound.SoundInstance;
+import net.minecraft.client.sound.SoundManager;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
@@ -138,14 +143,16 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                                             new SoundEvent(soundID, null),
                                             SoundCategory.MASTER,
                                             Random.create()
-                                    ) {};
+                                    ) {
+                                    };
                                 }
                             } else {
                                 soundInstance = new AbstractSoundInstance(
                                         new SoundEvent(soundID, null),
                                         SoundCategory.MASTER,
                                         Random.create()
-                                ) {};
+                                ) {
+                                };
                             }
 
                             soundManager.play(soundInstance);

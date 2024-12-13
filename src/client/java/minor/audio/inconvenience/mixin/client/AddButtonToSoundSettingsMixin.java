@@ -2,8 +2,8 @@ package minor.audio.inconvenience.mixin.client;
 
 import minor.audio.inconvenience.AddSoundsScreen;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.option.SoundOptionsScreen;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.option.SoundOptionsScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,9 +21,8 @@ public class AddButtonToSoundSettingsMixin extends Screen {
     private void addButton(CallbackInfo ci) {
         ButtonWidget openAddButtonsMenu = ButtonWidget.builder(
                 Text.translatable("text.menu.minor-audio-inconvenience.add.enter"),
-                button -> {
-                    MinecraftClient.getInstance().setScreen(new AddSoundsScreen());
-                }
+                button -> MinecraftClient.getInstance().setScreen(new AddSoundsScreen())
+
         ).dimensions(6, 6, 180, 20).build();
 
         this.addDrawableChild(openAddButtonsMenu);
