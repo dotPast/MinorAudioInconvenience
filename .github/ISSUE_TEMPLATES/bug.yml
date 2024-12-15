@@ -1,0 +1,36 @@
+name: Bug Report
+description: Report bugs for the mod (Crashes, UI, etc.)
+labels: ["Bug/Crash"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the issue
+      description: |
+        Describe the issue. The description must be clear and cannot be ambiguous.
+    validations:
+      required: true
+  - type: input
+    id: logs
+    attributes:
+      label: Logs and Crash Reports
+      description: Upload logs or crash reports to a paste website (mclo.gs, pastebin.org, gist.github.com, etc.), if they are relevant to the issue.
+      placeholder: "https://mclo.gs/..."
+    validations:
+      required: false
+  - type: input
+    id: modversion
+    attributes:
+      label: Mod version
+      description: What version of the mod is affected? If you are not using the latest version, verify that the issue is present on it.
+      placeholder: "0.0.1"
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Extra information
+      description: |
+        Feel free to add your configuration files, screenshots and other information that is relevant to the issue.
+    validations:
+      required: false
