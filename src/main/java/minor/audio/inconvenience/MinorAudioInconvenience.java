@@ -1,20 +1,21 @@
 package minor.audio.inconvenience;
 
-import net.fabricmc.api.ModInitializer;
+import com.mojang.logging.LogUtils;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class MinorAudioInconvenience implements ModInitializer {
-    public static final String MOD_ID = "minor-audio-inconvenience";
+// The value here should match an entry in the META-INF/neoforge.mods.toml file
+@Mod(MinorAudioInconvenience.MODID)
+public class MinorAudioInconvenience {
+    // Define mod id in a common place for everything to reference
+    public static final String MODID = "minoraudioinconvenience";
+    // Directly reference a slf4j logger
+    private static final Logger LOGGER = LogUtils.getLogger();
 
-    // This logger is used to write text to the console and the log file.
-    // It is considered best practice to use your mod id as the logger's name.
-    // That way, it's clear which mod wrote info, warnings, and errors.
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-    public static final minor.audio.inconvenience.ModConfig CONFIG = minor.audio.inconvenience.ModConfig.createAndLoad();
-
-    @Override
-    public void onInitialize() {
+    // The constructor for the mod class is the first code that is run when your mod is loaded.
+    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
+    public MinorAudioInconvenience(IEventBus modEventBus, ModContainer modContainer) {
     }
 }
