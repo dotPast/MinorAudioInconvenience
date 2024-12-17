@@ -3,7 +3,8 @@
   "package": "minor.audio.inconvenience.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "AddButtonToSoundSettingsMixin"
+    "AddButtonToSoundSettingsMixin",
+    "DisplaySubtitleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
