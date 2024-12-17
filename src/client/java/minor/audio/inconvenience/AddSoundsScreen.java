@@ -75,7 +75,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
 
         Map<String, CollapsibleContainer> containers = new HashMap<>();
 
-        for (Identifier soundID : soundManager.sounds.keySet()) {
+        for (Identifier soundID : soundManager.getKeys()) {
             if (searchQuery.length() == 0) {
                 String soundNamespace = soundID.getNamespace();
 
