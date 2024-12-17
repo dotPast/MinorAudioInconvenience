@@ -14,7 +14,7 @@ public class MinorAudioInconvenience {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "minoraudioinconvenience";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final ModConfig CONFIG = ModConfig.createAndLoad();
 
