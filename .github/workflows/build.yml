@@ -28,10 +28,22 @@ jobs:
       - name: make gradle wrapper executable
         run: chmod +x ./gradlew
       - name: build
-        run: ./gradlew build
-      - name: capture build artifacts
+        run: ./gradlew chiseledBuild
+      - name: capture build artifacts (1.21)
         if: ${{ matrix.java == '21' }} # Only upload artifacts built from latest java
         uses: actions/upload-artifact@v4
         with:
-          name: Artifacts
-          path: build/libs/
+          name: 1.21
+          path: versions/1.21/build/libs/
+      - name: capture build artifacts (1.21.3)
+        if: ${{ matrix.java == '21' }} # Only upload artifacts built from latest java
+        uses: actions/upload-artifact@v4
+        with:
+          name: 1.21.3
+          path: versions/1.21.3/build/libs/
+      - name: capture build artifacts (1.21.4)
+        if: ${{ matrix.java == '21' }} # Only upload artifacts built from latest java
+        uses: actions/upload-artifact@v4
+        with:
+          name: 1.21.4
+          path: versions/1.21.4/build/libs/
