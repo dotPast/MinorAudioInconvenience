@@ -186,16 +186,6 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                 (io.wispforest.owo.ui.core.Component) volumeSlider
         );
 
-        ButtonComponent addToConfigButton = Components.button(Component.literal("+"), button -> {
-            Double volume = Math.ceil(volumeSlider.value() * 100) / 100;
-
-            MinorAudioInconvenience.CONFIG.soundList().removeIf(entry -> entry.split("=")[0].equals(soundID.toString()));
-
-            MinorAudioInconvenience.CONFIG.soundList().add(String.format("%s=%s", soundID, volume));
-            MinorAudioInconvenience.CONFIG.save();
-            button.setMessage(Component.literal("✔"));
-        });
-
         for (String configId : MinorAudioInconvenience.CONFIG.soundList()) {
             String[] configSplit = configId.split("=");
 
@@ -204,11 +194,15 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
             }
         }
 
-        addToConfigButton.setWidth(20);
-        addToConfigButton.setHeight(20);
-
-        soundInteraction.child(
-                (io.wispforest.owo.ui.core.Component) addToConfigButton
+        volumeSlider.onChanged().subscribe(
+                (value) -> {
+                    Double volume = Math.ceil(value * 100) / 100;
+                    MinorAudioInconvenience.CONFIG.soundList().removeIf(entry -> entry.split("=")[0].equals(soundID.toString()));
+                    if (value != 1) {
+                        MinorAudioInconvenience.CONFIG.soundList().add(String.format("%s=%s", soundID, volume));
+                    }
+                    MinorAudioInconvenience.CONFIG.save();
+                }
         );
 
         soundComponent.child(soundInfo.alignment(HorizontalAlignment.LEFT, VerticalAlignment.CENTER), 0, 0);
