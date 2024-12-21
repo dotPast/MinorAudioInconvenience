@@ -5,15 +5,6 @@ plugins {
     id 'idea'
 }
 
-tasks.named('wrapper', Wrapper).configure {
-    // Define wrapper values here so as to not have to always do so when updating gradlew.properties.
-    // Switching this to Wrapper.DistributionType.ALL will download the full gradle sources that comes with
-    // documentation attached on cursor hover of gradle classes and methods. However, this comes with increased
-    // file size for Gradle. If you do switch this to ALL, run the Gradle wrapper task twice afterwards.
-    // (Verify by checking gradle/wrapper/gradle-wrapper.properties to see if distributionUrl now points to `-all`)
-    distributionType = Wrapper.DistributionType.BIN
-}
-
 version = mod_version
 group = mod_group_id
 
@@ -35,8 +26,8 @@ neoForge {
     version = project.neo_version
 
     parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
+        mappingsVersion = property("parchment_mappings_version")
+        minecraftVersion = property("parchment_minecraft_version")
     }
 
     // This line is optional. Access Transformers are automatically detected
@@ -66,16 +57,6 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
-        clientData {
-            clientData()
-
-            // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
-            // gameDirectory = project.file('run-data')
-
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
-        }
-
         // applies to all the run configs above
         configureEach {
             // Recommended logging data for a userdev environment
@@ -98,7 +79,7 @@ neoForge {
         // mostly optional in a single mod project
         // but multi mod projects should define one per mod
         "${mod_id}" {
-            sourceSet(sourceSets.main)
+            sourceSet sourceSets.main
         }
     }
 }
@@ -137,9 +118,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-    annotationProcessor implementation("io.wispforest:owo-lib-neoforge:${project.owo_version}")
-
-    compileOnly "io.wispforest:owo-sentinel:${project.owo_sentinel_version}"
+    annotationProcessor implementation("io.wispforest:owo-lib-neoforge:${property("owo_version")}")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -161,7 +140,10 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
     ]
     inputs.properties replaceProperties
     expand replaceProperties
-    from "src/main/templates"
+    from "../../src/main/templates"
+    // The root folder here is 'versions/(version)/' and we need to traverse back into
+    // the root of the entire project, so NeoForge metadata template is detected correctly.
+
     into "build/generated/sources/modMetadata"
 }
 // Include the output of "generateModMetadata" as an input directory for the build

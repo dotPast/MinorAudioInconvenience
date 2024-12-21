@@ -128,7 +128,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
             if (gameInstance.getSingleplayerServer() != null || gameInstance.getCurrentServer() != null) {
                 if (gameInstance.player != null) {
                     soundInstance = new SimpleSoundInstance(
-                            new SoundEvent(soundID, null),
+                            SoundEvent.createVariableRangeEvent(soundID),
                             SoundSource.MASTER,
                             1f,
                             1f,
@@ -139,7 +139,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                     );
                 } else {
                     soundInstance = new AbstractSoundInstance(
-                            new SoundEvent(soundID, null),
+                            SoundEvent.createVariableRangeEvent(soundID),
                             SoundSource.MASTER,
                             RandomSource.create()
                     ) {
@@ -147,7 +147,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
                 }
             } else {
                 soundInstance = new AbstractSoundInstance(
-                        new SoundEvent(soundID, null),
+                        SoundEvent.createVariableRangeEvent(soundID),
                         SoundSource.MASTER,
                         RandomSource.create()
                 ) {
@@ -189,12 +189,7 @@ public class AddSoundsScreen extends BaseOwoScreen<FlowLayout> {
         ButtonComponent addToConfigButton = Components.button(Component.literal("+"), button -> {
             Double volume = Math.ceil(volumeSlider.value() * 100) / 100;
 
-            for (String configId : MinorAudioInconvenience.CONFIG.soundList()) {
-                if (configId.split("=")[0].equals(soundID.toString())) {
-                    MinorAudioInconvenience.CONFIG.soundList().remove(configId);
-                    break;
-                }
-            }
+            MinorAudioInconvenience.CONFIG.soundList().removeIf(entry -> entry.split("=")[0].equals(soundID.toString()));
 
             MinorAudioInconvenience.CONFIG.soundList().add(String.format("%s=%s", soundID, volume));
             MinorAudioInconvenience.CONFIG.save();

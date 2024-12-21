@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
 import java.util.Objects;
-import java.util.Optional;
 
 @Mixin(ClientLevel.class)
 public class PlaySoundMixin {
@@ -49,7 +48,7 @@ public class PlaySoundMixin {
             args.set(
                     0,
                     new SimpleSoundInstance(
-                            new SoundEvent(sound.getLocation(), Optional.empty()), sound.getSource(), volume, pitch, RandomSource.create(), sound.getX(), sound.getY(), sound.getZ()
+                            SoundEvent.createVariableRangeEvent(sound.getLocation()), sound.getSource(), volume, pitch, RandomSource.create(), sound.getX(), sound.getY(), sound.getZ()
                     )
             );
         }
@@ -89,7 +88,7 @@ public class PlaySoundMixin {
             args.set(
                     0,
                     new SimpleSoundInstance(
-                            new SoundEvent(sound.getLocation(), Optional.empty()), sound.getSource(), volume, pitch, RandomSource.create(), sound.getX(), sound.getY(), sound.getZ()
+                            SoundEvent.createVariableRangeEvent(sound.getLocation()), sound.getSource(), volume, pitch, RandomSource.create(), sound.getX(), sound.getY(), sound.getZ()
                     )
             );
         }
