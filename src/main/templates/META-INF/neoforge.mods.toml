@@ -90,7 +90,7 @@ file="META-INF/accesstransformer.cfg"
     modId="owo"
     type="required"
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="${owo_version}"
+    versionRange="[${owo_version},)"
     ordering="NONE"
     side="CLIENT"
 
