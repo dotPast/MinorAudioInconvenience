@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "package": "minor.audio.inconvenience.fabric.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
