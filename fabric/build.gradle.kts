@@ -7,6 +7,11 @@ plugins {
     id("com.github.johnrengelman.shadow")
 }
 
+repositories {
+    maven("https://maven.shedaniel.me/")
+    maven("https://maven.terraformersmc.com/releases/")
+}
+
 val loader = prop("loom.platform")!!
 val minecraft: String = stonecutter.current.version
 val common: Project = requireNotNull(stonecutter.node.sibling("")) {
@@ -41,7 +46,38 @@ configurations {
 dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
     mappings("net.fabricmc:yarn:$minecraft+build.${common.mod.dep("yarn_build")}:v2")
-    modImplementation("net.fabricmc:fabric-loader:${mod.dep("fabric_loader")}")
+
+    val clothConfigVersion = when (stonecutter.active.version) {
+        "1.19" -> "8.3.134"
+        "1.19.3" -> "9.1.104"
+        "1.19.4" -> "10.1.135"
+        "1.20.1" -> "11.1.136"
+        "1.20.2" -> "12.0.137"
+        "1.20.3" -> "13.0.138"
+        "1.20.6" -> "14.0.139"
+        "1.21.1" -> "15.0.140"
+        else -> "17.0.144" // 1.21.2+
+    }
+
+    val modMenuVersion = when (stonecutter.active.version) {
+        "1.19" -> "4.0.4"
+        "1.19.3" -> "5.0.0"
+        "1.19.4" -> "6.3.1"
+        "1.20.1" -> "7.2.2"
+        "1.20.2" -> "8.0.1"
+        "1.20.3" -> "9.0.0"
+        "1.20.6" -> "9.2.0"
+        "1.21.1" -> "11.0.3"
+        "1.21.2" -> "12.0.0"
+        else -> "13.0.1" // 1.21.4
+    }
+
+    modApi("me.shedaniel.cloth:cloth-config-fabric:$clothConfigVersion") {
+        exclude("net.fabricmc.fabric-api")
+        exclude("net.fabricmc.fabric-loader")
+    }
+
+    modApi("com.terraformersmc:modmenu:$modMenuVersion")
 
     commonBundle(project(common.path, "namedElements")) { isTransitive = false }
     shadowBundle(project(common.path, "transformProductionFabric")) { isTransitive = false }
