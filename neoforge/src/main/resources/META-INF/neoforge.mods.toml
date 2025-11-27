@@ -7,9 +7,9 @@ license = "BSD-3-Clause"
 modId = "minoraudioinconvenience"
 version = "${version}"
 displayName = "Minor Audio Inconvenience"
-authors = "Me!"
+authors = "dotundrscr"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+A mod that adds per-sound volume sliders.
 '''
 #logoFile = ""
 
@@ -18,14 +18,14 @@ modId = "neoforge"
 type = "required"
 versionRange = "[21.10,)"
 ordering = "NONE"
-side = "BOTH"
+side = "CLIENT"
 
 [[dependencies.minoraudioinconvenience]]
 modId = "minecraft"
 type = "required"
 versionRange = "[1.21.10,)"
 ordering = "NONE"
-side = "BOTH"
+side = "CLIENT"
 
 [[mixins]]
 config = "minoraudioinconvenience.mixins.json"

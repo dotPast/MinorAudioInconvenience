@@ -3,17 +3,16 @@
   "id": "minoraudioinconvenience",
   "version": "${version}",
   "name": "Minor Audio Inconvenience",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "A mod that adds per-sound volume sliders.",
   "authors": [
-    "Me!"
+    "dotundrscr"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/dotundrscr/MinorAudioInconvenience"
   },
   "license": "BSD-3-Clause",
   "icon": "assets/minoraudioinconvenience/icon.png",
-  "environment": "*",
+  "environment": "CLIENT",
   "entrypoints": {
     "main": [
       "cc.braindead.minoraudioinconvenience.fabric.MinorAudioInconvenienceFabric"
