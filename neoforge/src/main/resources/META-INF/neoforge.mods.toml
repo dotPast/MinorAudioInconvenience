@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[10,)"
+#issueTrackerURL = ""
+license = "Insert License Here"
+
+[[mods]]
+modId = "minoraudioinconvenience"
+version = "${version}"
+displayName = "Minor Audio Inconvenience"
+authors = "Me!"
+description = '''
+This is an example description! Tell everyone what your mod is about!
+'''
+#logoFile = ""
+
+[[dependencies.minoraudioinconvenience]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.10,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.minoraudioinconvenience]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.10,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[mixins]]
+config = "minoraudioinconvenience.mixins.json"
