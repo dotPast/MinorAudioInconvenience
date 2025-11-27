@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[10,)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "BSD-3-Clause"
 
 [[mods]]
 modId = "minoraudioinconvenience"
