@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "cc.braindead.minoraudioinconvenience.fabric.ExampleModFabric"
+      "cc.braindead.minoraudioinconvenience.fabric.MinorAudioInconvenienceFabric"
     ],
     "client": [
-      "cc.braindead.minoraudioinconvenience.fabric.client.ExampleModFabricClient"
+      "cc.braindead.minoraudioinconvenience.fabric.client.MinorAudioInconvenienceFabricClient"
     ]
   },
   "mixins": [

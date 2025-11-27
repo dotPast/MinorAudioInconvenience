@@ -2,9 +2,9 @@ package cc.braindead.minoraudioinconvenience.fabric;
 
 import net.fabricmc.api.ModInitializer;
 
-import cc.braindead.minoraudioinconvenience.ExampleMod;
+import cc.braindead.minoraudioinconvenience.MinorAudioInconvenience;
 
-public final class ExampleModFabric implements ModInitializer {
+public final class MinorAudioInconvenienceFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -12,6 +12,6 @@ public final class ExampleModFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
-        ExampleMod.init();
+        MinorAudioInconvenience.init();
     }
 }

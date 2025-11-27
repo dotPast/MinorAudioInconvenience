@@ -1,6 +1,6 @@
 package cc.braindead.minoraudioinconvenience;
 
-public final class ExampleMod {
+public final class MinorAudioInconvenience {
     public static final String MOD_ID = "minoraudioinconvenience";
 
     public static void init() {
